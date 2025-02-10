@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+ 
+}
+
+@font-face {
+    font-family: 'iranSans_regular';
+    src: url('/fonts/IRANSans(FaNum).ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'iranSans_black';
+    src: url('/fonts/IRANSans(FaNum)_Black.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'iranSans_bold';
+    src: url('/fonts/IRANSans(FaNum)_Bold.ttf') format('truetype');
+}
+
+
+@font-face {
+    font-family: 'iranSans_medium';
+    src: url('/fonts/IRANSans(FaNum)_Medium') format('truetype');
+}
+
+
+ 

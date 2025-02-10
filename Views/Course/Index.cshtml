@@ -1,0 +1,360 @@
+﻿@model IEnumerable<Course>
+
+ 
+
+@{
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+
+}
+
+<div class="mt-10 flex w-full flex-col items-center justify-center gap-3">
+
+    <div class="flex w-full flex-row items-center justify-center gap-2">
+
+        <span class="text-[35px] text-gray-400">
+            <i class="fa-solid fa-minus text-gray-400"></i>
+        </span>
+
+          
+
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><g transform="translate(-2 -2)"><rect width="24" height="24" transform="translate(2 2)" fill="none" opacity="0"></rect><path d="M58.56,414.56H57.342a9.357,9.357,0,0,0-2.428-5.854l.864-.864a.428.428,0,0,0,.126-.306.436.436,0,0,0-.746-.314l-.864.864a9.357,9.357,0,0,0-5.854-2.428V404.44A.457.457,0,0,0,48,404a.439.439,0,0,0-.44.44v1.218a9.357,9.357,0,0,0-5.854,2.428l-.864-.864a.436.436,0,0,0-.746.314.428.428,0,0,0,.126.306l.864.864a9.357,9.357,0,0,0-2.428,5.854H37.44a.44.44,0,1,0,0,.88h1.218a9.356,9.356,0,0,0,2.428,5.854l-.864.864a.439.439,0,0,0,.621.621l.864-.864a9.357,9.357,0,0,0,5.854,2.428v1.218a.44.44,0,0,0,.88,0v-1.218a9.357,9.357,0,0,0,5.854-2.428l.864.864a.439.439,0,0,0,.621-.621l-.864-.864a9.356,9.356,0,0,0,2.428-5.854H58.56A.457.457,0,0,0,59,415,.439.439,0,0,0,58.56,414.56Zm-10.12-8.022a8.5,8.5,0,0,1,5.225,2.169l-.676.676A7.481,7.481,0,0,0,48.44,407.5Zm-.88,0v.966a7.481,7.481,0,0,0-4.549,1.878l-.676-.676A8.5,8.5,0,0,1,47.56,406.538Zm-5.854,2.8.676.676A7.481,7.481,0,0,0,40.5,414.56h-.966A8.5,8.5,0,0,1,41.706,409.335Zm-2.169,6.105H40.5a7.481,7.481,0,0,0,1.878,4.549l-.676.676A8.5,8.5,0,0,1,39.538,415.44Zm8.022,8.022a8.5,8.5,0,0,1-5.225-2.169l.676-.676A7.481,7.481,0,0,0,47.56,422.5Zm.44-1.831c-.149,0-.3-.008-.44-.016a6.647,6.647,0,0,1-3.921-1.626,5.934,5.934,0,0,1-.629-.629,6.647,6.647,0,0,1-1.626-3.921c-.008-.141-.016-.291-.016-.44s.008-.3.016-.44a6.647,6.647,0,0,1,1.626-3.921,5.928,5.928,0,0,1,.629-.629,6.647,6.647,0,0,1,3.921-1.626c.141-.008.291-.016.44-.016s.3.008.44.016a6.647,6.647,0,0,1,3.921,1.626,5.929,5.929,0,0,1,.629.629,6.647,6.647,0,0,1,1.626,3.921c.008.141.016.291.016.44s-.008.3-.016.44a6.647,6.647,0,0,1-1.626,3.921,5.934,5.934,0,0,1-.629.629,6.647,6.647,0,0,1-3.921,1.626C48.3,421.624,48.149,421.631,48,421.631Zm.44,1.831V422.5a7.481,7.481,0,0,0,4.549-1.878l.676.676A8.5,8.5,0,0,1,48.44,423.462Zm5.854-2.8-.676-.676A7.481,7.481,0,0,0,55.5,415.44h.966A8.5,8.5,0,0,1,54.294,420.665Zm1.2-6.1a7.481,7.481,0,0,0-1.878-4.549l.676-.676a8.5,8.5,0,0,1,2.169,5.225Z" transform="translate(-34 -401)" fill="#0b032d"></path><rect width="7.071" height="0.786" rx="0.393" transform="translate(8.893 16.357)" fill="#fcbf17"></rect><rect width="10.214" height="0.786" rx="0.393" transform="translate(8.893 14.786)" fill="#fcbf17"></rect><path d="M58.779,409.331l-.2.2-1.854,1.791-4.125,4L51,415.8l.479-1.6,4-4.125,1.791-1.854.2-.2a.929.929,0,0,1,1-.2.86.86,0,0,1,.511.511A.929.929,0,0,1,58.779,409.331Z" transform="translate(-37 -401.805)" fill="#fcbf17"></path></g></svg>
+
+
+
+
+        <span class="text-[35px]">دوره های آموزشی </span>
+
+        <span class="text-[35px]">
+            <i class="fa-solid fa-minus"></i>
+        </span>
+    </div>
+
+
+    @*   
+
+ // uncomment this section in version 2    
+
+<form method="get">
+        <input name="SearchQuery" placeholder="search here... " class="w-full rounded-xl border-none bg-gray-200 p-2 hover:border-none focus:border-none" />
+
+        <div class="mt-5 flex flex-row gap-8">
+
+            <div class="flex flex-col gap-3">
+                <label>دسته بندی </label>
+
+                <select name="categoryId" class="rounded-xl bg-gray-200 p-2">
+                    <option disabled> --- انتخاب کنید --- </option>
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option class="bg-white text-black" value="@category.Value">@category.Text</option>
+                    }
+                </select>
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+                <label>نویسنده</label>
+
+                <select class="rounded-xl bg-gray-200 p-2">
+                    <option> --- انتخاب کنید --- </option>
+                </select>
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+                <label>مرتب سازی </label>
+
+                <select name="order" class="rounded-xl bg-gray-200 p-2">
+                    <option class="bg-white text-black" disabled> --- انتخاب کنید --- </option>
+                    <option value="desc" class="bg-white text-black">جدید ترین</option>
+                    <option value="asc" class="bg-white text-black">قدیمی ترین </option>
+                </select>
+            </div>
+
+
+        </div>
+        <div class="mt-4 flex flex-col">
+            <input type="submit" value="جستجو" class="rounded bg-blue-500 p-2 text-white" />
+        </div>
+
+    </form>
+
+    // END  uncomment this section in version 2
+    *@
+    
+
+
+
+
+
+</div>
+
+<hr class="mb-10 mr-32 mt-10 flex w-[80%] flex-row items-center justify-center" />
+
+
+<a asp-controller="course" asp-action="AddCourse" class="my-5 mr-10 mt-10">
+    <button class="btn btn-outline btn-primary">
+        <i class="fa-solid fa-plus"></i>
+        افزودن  دوره آموزشی 
+    </button>
+</a>
+<div class="overflow-x-auto px-10">
+    <table class="table">
+        <!-- head -->
+        <thead>
+            <tr>                
+                <th>عنوان</th>
+                <th>دسته بندی</th>
+                <th>تاریخ </th>
+                <th>عملیات</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            
+            @foreach (var course in Model)
+            {                
+            
+            <tr>
+                 
+                <td>
+                    <div class="flex items-center gap-3">
+                        <div class="avatar">
+                            <div class="mask mask-squircle h-12 w-12">
+                                <img src="@course.ImageUrl"
+                                     alt="@course.Title" />
+                            </div>
+                        </div>
+                        <div>
+                                <a asp-controller="course" asp-action="ViewCourse" asp-route-id="@course.CourseId" class="font-bold">
+                                    @course.Title
+                            </a>
+                                <div class="text-sm opacity-50">     @((course.User.Name ?? course.User.UserName))</div>
+                        </div>
+                    </div>
+                </td>
+                <td>
+
+                        @course.Category.Title 
+
+
+                </td>
+                    <td>@course.CreatedAt.ToString("yyyy/MM/dd", new System.Globalization.CultureInfo("fa-IR"))</td>
+                <th>
+                        <a asp-controller="course" asp-action="ViewCourse" asp-route-id="@course.CourseId">
+                            <button class="btn btn-primary btn-xs">نمایش پست </button>
+                    </a>
+
+                      @*   <a asp-controller="Course" asp-action="EditCourse" asp-route-id="@course.CourseId">
+                            <button class="btn btn-accent btn-xs">ویرایش</button>
+                    </a> *@
+
+                        <a asp-controller="course" asp-action="RemoveCourse" asp-route-id="@course.CourseId">
+                         <button class="btn btn-secondary btn-xs">حذف</button>
+                        </a>
+                </th>
+            </tr>
+          
+            }
+           
+        </tbody>
+        <!-- foot -->
+      @*   <tfoot>
+            <tr>
+                <th></th>
+                <th>Name</th>
+                <th>Job</th>
+                <th>Favorite Color</th>
+                <th></th>
+            </tr>
+        </tfoot> *@
+    </table>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@* @model IEnumerable<Blog>
+
+<h2>list of blogs </h2>
+
+<div class="flex w-full flex-col items-center justify-center gap-3 border border-red-400">
+
+    <div class="flex flex-row items-center justify-center gap-2">
+
+        <span class="text-[35px] text-gray-400">
+            <i class="fa-solid fa-minus text-gray-400"></i>
+        </span>
+
+       
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24"><g transform="translate(-2 -2)"><rect width="24" height="24" transform="translate(2 2)" fill="none" opacity="0"></rect><path d="M58.56,414.56H57.342a9.357,9.357,0,0,0-2.428-5.854l.864-.864a.428.428,0,0,0,.126-.306.436.436,0,0,0-.746-.314l-.864.864a9.357,9.357,0,0,0-5.854-2.428V404.44A.457.457,0,0,0,48,404a.439.439,0,0,0-.44.44v1.218a9.357,9.357,0,0,0-5.854,2.428l-.864-.864a.436.436,0,0,0-.746.314.428.428,0,0,0,.126.306l.864.864a9.357,9.357,0,0,0-2.428,5.854H37.44a.44.44,0,1,0,0,.88h1.218a9.356,9.356,0,0,0,2.428,5.854l-.864.864a.439.439,0,0,0,.621.621l.864-.864a9.357,9.357,0,0,0,5.854,2.428v1.218a.44.44,0,0,0,.88,0v-1.218a9.357,9.357,0,0,0,5.854-2.428l.864.864a.439.439,0,0,0,.621-.621l-.864-.864a9.356,9.356,0,0,0,2.428-5.854H58.56A.457.457,0,0,0,59,415,.439.439,0,0,0,58.56,414.56Zm-10.12-8.022a8.5,8.5,0,0,1,5.225,2.169l-.676.676A7.481,7.481,0,0,0,48.44,407.5Zm-.88,0v.966a7.481,7.481,0,0,0-4.549,1.878l-.676-.676A8.5,8.5,0,0,1,47.56,406.538Zm-5.854,2.8.676.676A7.481,7.481,0,0,0,40.5,414.56h-.966A8.5,8.5,0,0,1,41.706,409.335Zm-2.169,6.105H40.5a7.481,7.481,0,0,0,1.878,4.549l-.676.676A8.5,8.5,0,0,1,39.538,415.44Zm8.022,8.022a8.5,8.5,0,0,1-5.225-2.169l.676-.676A7.481,7.481,0,0,0,47.56,422.5Zm.44-1.831c-.149,0-.3-.008-.44-.016a6.647,6.647,0,0,1-3.921-1.626,5.934,5.934,0,0,1-.629-.629,6.647,6.647,0,0,1-1.626-3.921c-.008-.141-.016-.291-.016-.44s.008-.3.016-.44a6.647,6.647,0,0,1,1.626-3.921,5.928,5.928,0,0,1,.629-.629,6.647,6.647,0,0,1,3.921-1.626c.141-.008.291-.016.44-.016s.3.008.44.016a6.647,6.647,0,0,1,3.921,1.626,5.929,5.929,0,0,1,.629.629,6.647,6.647,0,0,1,1.626,3.921c.008.141.016.291.016.44s-.008.3-.016.44a6.647,6.647,0,0,1-1.626,3.921,5.934,5.934,0,0,1-.629.629,6.647,6.647,0,0,1-3.921,1.626C48.3,421.624,48.149,421.631,48,421.631Zm.44,1.831V422.5a7.481,7.481,0,0,0,4.549-1.878l.676.676A8.5,8.5,0,0,1,48.44,423.462Zm5.854-2.8-.676-.676A7.481,7.481,0,0,0,55.5,415.44h.966A8.5,8.5,0,0,1,54.294,420.665Zm1.2-6.1a7.481,7.481,0,0,0-1.878-4.549l.676-.676a8.5,8.5,0,0,1,2.169,5.225Z" transform="translate(-34 -401)" fill="#0b032d"></path><rect width="7.071" height="0.786" rx="0.393" transform="translate(8.893 16.357)" fill="#fcbf17"></rect><rect width="10.214" height="0.786" rx="0.393" transform="translate(8.893 14.786)" fill="#fcbf17"></rect><path d="M58.779,409.331l-.2.2-1.854,1.791-4.125,4L51,415.8l.479-1.6,4-4.125,1.791-1.854.2-.2a.929.929,0,0,1,1-.2.86.86,0,0,1,.511.511A.929.929,0,0,1,58.779,409.331Z" transform="translate(-37 -401.805)" fill="#fcbf17"></path></g></svg>
+
+         
+
+
+        <span class="text-[35px]">وبلاگ، مقاله‌های تخصصی</span>
+
+        <span class="text-[35px]">
+            <i class="fa-solid fa-minus"></i>
+        </span>
+    </div>
+    
+
+    <form method="get"  >
+        <input name="SearchQuery" placeholder="search here... " class="w-full rounded-xl border-none bg-gray-200 p-2 hover:border-none focus:border-none" />
+        
+        <div class="mt-5 flex flex-row gap-8">
+
+            <div class="flex flex-col gap-3">
+                <label>دسته بندی </label>
+
+                <select name="categoryId" class="rounded-xl bg-gray-200 p-2">
+                    <option disabled> --- انتخاب کنید --- </option>
+                    @foreach (var category in ViewBag.Categories)
+                    {
+                        <option class="bg-white text-black" value="@category.Value">@category.Text</option>
+                    }
+                </select>
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+                <label>نویسنده</label>
+
+                <select class="rounded-xl bg-gray-200 p-2">
+                    <option> --- انتخاب کنید --- </option>
+                </select>
+            </div>
+
+
+            <div class="flex flex-col gap-3">
+                <label>مرتب سازی </label>
+
+                <select name="order" class="rounded-xl bg-gray-200 p-2">
+                    <option class="bg-white text-black" disabled> --- انتخاب کنید --- </option>
+                    <option value="desc" class="bg-white text-black">جدید ترین</option>
+                    <option value="asc" class="bg-white text-black">قدیمی ترین </option>
+                </select>
+            </div>
+
+
+        </div>
+            <div class="mt-4 flex flex-col">
+                 <input type="submit" value="جستجو" class="rounded bg-blue-500 p-2 text-white" />
+            </div>
+
+    </form>
+
+    <br /> <br />
+
+
+     
+</div>
+
+<hr />
+
+@* first *@
+    @* 
+<div class="mb-10 mr-10 flex w-full flex-col gap-5 border border-red-400">
+
+
+    @foreach (var blog in Model)
+    {
+        <div class="flex w-full flex-row-reverse gap-4 bg-green-100">
+            
+          <div class="mb-2 flex basis-3/4 flex-row gap-4 rounded-xl border border-gray-200">
+
+                <div class="flex flex-col justify-between">
+                      <a asp-controller="blog" asp-action="ViewBlog" asp-route-id="@blog.BlogId">
+                     <h1 class="mr-3 font-bold text-[35px]">@blog.Title</h1>
+                     </a>
+
+                     <div class="mr-3 flex flex-row gap-4 bg-amber-300">
+
+                        <div class="flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-user-pen"></i>
+                            <span>
+                                سعید ایمانی 
+                            </span>
+                         </div>
+
+
+                        <div class="flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-list"></i>
+                            <span>
+                                @blog.Category.Title
+                            </span>
+                         </div>
+
+                 
+
+             </div>
+              </div>
+            
+
+
+          </div>
+
+          <div class="basis-1/4"> 
+              <img src="@blog.ImageUrl" height="250" width="250" class= "rounded-2xl"  />
+          </div>
+
+
+        </div>
+
+    }
+
+</div>
+   *@
+  @* end *@
+@* <div>
+    @foreach (var blog in Model)
+    {
+        <a asp-controller="blog" asp-action="ViewBlog" asp-route-id="@blog.BlogId">
+            <span>title of post: &nbsp; @blog.Title</span> 
+        </a>
+        
+        <br />
+        <p>@blog.Content</p>
+
+        <br />
+
+        <span>Category: @blog.Category.Title</span> <br />
+        <span>Date: @blog.CreatedAt</span> <br />
+        <ul>
+            @foreach (var tag in blog.Tags)
+            {
+                <li class="text-red-400">@tag</li>
+            }
+        </ul>
+
+
+        <div class="flex gap-5">
+            <a class="rounded bg-green-500 p-2 text-white"
+            target="_blank"
+            asp-controller="blog"
+            asp-action="EditBlog"
+            asp-route-id="@blog.BlogId"
+            >Edit</a>
+
+            <a class="rounded bg-red-500 p-2 text-white"
+               
+               asp-controller="blog"
+               asp-action="RemoveBlog"
+               asp-route-id="@blog.BlogId">Delete</a>
+
+        </div>
+    }
+</div> *@

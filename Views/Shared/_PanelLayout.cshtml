@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html dir="rtl">
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - SokanAcademy</title>
+    @* <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" /> *@
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/SokanAcademy.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/styles.css" asp-append-version="true" />
+
+    <link href="~/lib/fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+
+</head>
+<body class="font-iransans_regular">
+
+    <header>
+        <partial name="Navbar" />
+    </header>
+   
+    <div class="flex w-full flex-row">
+        
+        <div class="basis-1/6" >
+            <partial name="_Sidebar" />
+        </div>
+
+        <div class="mr-10 basis-5/6">
+            @RenderBody()
+        </div>
+
+    </div>
+
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

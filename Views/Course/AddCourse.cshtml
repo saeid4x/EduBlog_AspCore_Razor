@@ -1,0 +1,239 @@
+﻿@model AddCoursreViewModel
+
+@{
+    ViewData["Title"] = "Add Course";
+
+}
+
+
+@{
+    Layout = "~/Views/Shared/_PanelLayout.cshtml";
+
+}
+
+
+
+<link href="~/lib/trumbowyg-main/dist/ui/trumbowyg.min.css" rel="stylesheet" />
+
+
+<div class="mt-10 flex w-full flex-col items-center justify-center gap-3">
+
+    <div class="flex w-full flex-row items-center justify-center gap-2">
+
+        <span class="mt-4 text-[35px] text-gray-400">
+            <i class="fa-solid fa-minus text-gray-400"></i>
+        </span>
+
+
+
+        <svg version="1.1" width="50" height="50" id="_x32_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 512 512" xml:space="preserve" fill="#f05705" stroke="#f05705"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.024"></g><g id="SVGRepo_iconCarrier"> <style type="text/css">
+                                                                                                                                                                                                                                                                                                                                                                                                                             .st0 {
+                                                                                                                                                                                                                                                                                                                                                                                                                                 fill: #f05705;
+                                                                                                                                                                                                                                                                                                                                                                                                                             }
+</style> <g> <path class="st0" d="M421.073,221.719c-0.578,11.719-9.469,26.188-23.797,40.094v183.25c-0.016,4.719-1.875,8.719-5.016,11.844 c-3.156,3.063-7.25,4.875-12.063,4.906H81.558c-4.781-0.031-8.891-1.844-12.047-4.906c-3.141-3.125-4.984-7.125-5-11.844V152.219 c0.016-4.703,1.859-8.719,5-11.844c3.156-3.063,7.266-4.875,12.047-4.906h158.609c12.828-16.844,27.781-34.094,44.719-49.906 c0.078-0.094,0.141-0.188,0.219-0.281H81.558c-18.75-0.016-35.984,7.531-48.25,19.594c-12.328,12.063-20.016,28.938-20,47.344 v292.844c-0.016,18.406,7.672,35.313,20,47.344C45.573,504.469,62.808,512,81.558,512h298.641c18.781,0,36.016-7.531,48.281-19.594 c12.297-12.031,20-28.938,19.984-47.344V203.469c0,0-0.125-0.156-0.328-0.313C440.37,209.813,431.323,216.156,421.073,221.719z"></path> <path class="st0" d="M498.058,0c0,0-15.688,23.438-118.156,58.109C275.417,93.469,211.104,237.313,211.104,237.313 c-15.484,29.469-76.688,151.906-76.688,151.906c-16.859,31.625,14.031,50.313,32.156,17.656 c34.734-62.688,57.156-119.969,109.969-121.594c77.047-2.375,129.734-69.656,113.156-66.531c-21.813,9.5-69.906,0.719-41.578-3.656 c68-5.453,109.906-56.563,96.25-60.031c-24.109,9.281-46.594,0.469-51-2.188C513.386,138.281,498.058,0,498.058,0z"></path> </g> </g></svg>
+
+
+
+
+        <span class="text-[35px]">
+            ثبت دوره آموزشی جدید
+        </span>
+
+        <span class="mt-4 text-[35px] text-gray-400">
+            <i class="fa-solid fa-minus"></i>
+        </span>
+    </div>
+
+</div>
+
+<hr class="mb-10 mr-32 mt-10 flex w-[80%] flex-row items-center justify-center" />
+
+
+
+<div class="mx-10 mb-20">
+
+
+    <form asp-controller="course" asp-action="AddCourse" method="post" enctype="multipart/form-data" class="mb-32 mt-10">
+
+
+        <div class="flex flex-col gap-3">
+            <label class="font-bold text-[20px]">عنوان دوره آموزشی </label>
+            <input class="border-2 rounded-xl border-gray-200 p-2" asp-for="Title" />
+        </div>
+
+        <div class="mt-5 flex flex-col gap-3">
+            <label class="font-bold text-[20px]"> محتوای دوره آموزشی </label>
+
+            <textarea asp-for="Content" id="editor"></textarea>
+        </div>
+
+
+        <div class="mt-10 flex flex-row justify-around">
+
+         @* 
+            <div class="flex flex-col items-center justify-center gap-2">
+                <label class="rounded-xl p-2 font-bold text-[20px]">تصویر پست</label>
+                <input class="border-2 rounded border-gray-200" asp-for="ImageUrl" />
+            </div> *@
+
+            @* dslkdl *@
+
+            <div class="flex flex-col items-center justify-center gap-2">
+                <label class="font-bold text-[20px]"> دسته بندی </label>
+                <select class="border-2 rounded-xl border-gray-200 p-2" asp-for="CategoryId" asp-items="Model.Categories">
+                    <option disabled> --  انتخاب کنید --</option>
+                </select>
+            </div>
+
+
+
+            <div class="flex flex-col items-center justify-center gap-2">
+                <label class="font-bold text-[20px]">Content type</label>
+                <select asp-for="ContentType" class="border-2 rounded-xl border-gray-200 p-2">
+                    <option>-- select ---</option>
+                    <option value="Text"> Text </option>
+                    <option value="Video"> Video </option>
+                    <option value="Text_Video"> Text and Video </option>
+                    <option value="Voice"> Voice </option>
+                </select>
+            </div>
+
+
+
+            <div class="flex flex-col items-center justify-center gap-2">
+                <label class="font-bold text-[20px]">Level</label>
+                <select asp-for="Lavel" class="border-2 rounded-xl border-gray-200 p-2">
+                    <option>-- select ---</option>
+                    <option value="Intro"> Intro </option>
+                    <option value="Middle"> Middle </option>
+                    <option value="Advance"> Advance </option>
+                </select>
+            </div>
+
+@* 
+            <div class="flex flex-col items-center justify-center gap-2">
+                <label class="rounded-xl p-2 font-bold text-[20px]">تصویر پست</label>
+                <input class="border-2 rounded border-gray-200" asp-for="ImageUrl" />
+            </div> *@
+
+        </div>
+
+
+@* 
+        <div>
+            <label>Content type</label>
+            <select asp-for="ContentType" class="border-2 rounded border-gray-200">
+                <option>-- select ---</option>
+                <option value="Text"> Text </option>
+                <option value="Video"> Video </option>
+                <option value="Text_Video"> Text and Video </option>
+                <option value="Voice"> Voice </option>
+            </select>
+        </div> <br />
+
+        <div>
+            <label>Level</label>
+            <select asp-for="Lavel" class="border-2 rounded border-gray-200">
+                <option>-- select ---</option>
+                <option value="Intro"> Intro </option>
+                <option value="Middle"> Middle </option>
+                <option value="Advance"> Advance </option>
+            </select>
+        </div> <br />
+
+
+        <div>
+            <label>Category</label>
+            <select class="border-2 rounded border-gray-200" asp-for="CategoryId" asp-items="Model.Categories">
+                <option>-- select ---</option>
+
+            </select>
+        </div> <br />
+ *@
+
+
+
+        <div class="mt-10 flex flex-col items-start justify-start gap-2">
+            <label class="font-bold text-[20px]">تصویر پست</label>
+            <input asp-for="ImageUrl" class="border-2 rounded border-gray-200" />
+        </div>
+
+        <div class="mt-10 flex flex-col gap-3">
+
+            <label class="font-bold text-[20px]">مدت زمان دوره آموزشی</label>
+            <input asp-for="Duration" class="border-2 w-[30%] rounded-xl border-gray-200 p-2" />
+        </div> 
+        
+        <br /> <br />
+        <hr />
+
+        <h3 class="mt-5 text-center font-bold text-[20px]">سرفصل های دوره آموزشی</h3>
+        <div id="chapters-container">
+            <!-- Dynamic chapter list -->
+        </div>
+
+
+        <button type="button" onclick="addChapter()" class="mt-10 rounded bg-green-600 p-3 text-white">افزودن فصل</button>
+
+        <div class="mt-20">
+        <button type="submit" class="rounded bg-blue-600 p-3 text-white">ایجاد دوره آموزشی</button>
+
+        </div>
+
+
+
+
+    </form>
+
+
+</div>
+ 
+
+<script>
+    let chapterIndex = 0;
+
+    function addChapter() {
+        const chapterTemplate = `
+                <div class="chapter flex flex-col gap-2" data-index="${chapterIndex}">
+                        <h4 class="font-bold text-purple-600">فصل  ${chapterIndex + 1}</h4>
+                    <label>عنوان</label>
+                        <input name="Chapters[${chapterIndex}].Title" class="border-2 rounded border-gray-200" />
+                        <br />
+                    <label>مدت زمان</label>
+                        <input name="Chapters[${chapterIndex}].Duration" class="border-2 w-[30%] rounded border-gray-200" />
+                              <br />
+                    <h5 class="font-bold text-purple-600">آیتم های این فصل</h5>
+                    <div class="chapter-items" id="chapter-items-${chapterIndex}">
+                        <!-- Dynamic chapter items -->
+                    </div>
+                        <button type="button" onclick="addChapterItem(${chapterIndex})" class="w-[30%] rounded bg-green-600 p-3 text-white">افزودن آیتم های این فصل</button>
+                </div>
+            `;
+        document.getElementById("chapters-container").insertAdjacentHTML('beforeend', chapterTemplate);
+        chapterIndex++;
+    }
+
+    function addChapterItem(chapterIndex) {
+        const itemIndex = document.querySelectorAll(`#chapter-items-${chapterIndex} .chapter-item`).length;
+        const itemTemplate = `
+                    <div class="chapter-item flex flex-col gap-2">
+                    <label>عنوان آیتم</label>
+                        <input name="Chapters[${chapterIndex}].ChapterItems[${itemIndex}].Title" class="border-2 rounded border-gray-200" />
+
+                    <label>محتوای آیتم</label>
+                        <textarea name="Chapters[${chapterIndex}].ChapterItems[${itemIndex}].Content" class="border-2 rounded border-gray-200"></textarea>
+                </div>
+            `;
+        document.getElementById(`chapter-items-${chapterIndex}`).insertAdjacentHTML('beforeend', itemTemplate);
+    }
+</script>
+
+
+@section scripts {
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="~/lib/trumbowyg-main/dist/trumbowyg.min.js"></script>
+
+    <script>
+        $('#editor').trumbowyg();
+    </script>
+}

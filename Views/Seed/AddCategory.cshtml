@@ -1,0 +1,15 @@
+﻿@model Category
+
+<div class="mt-10">
+    <form asp-controller="seed" asp-action="AddCategory" method="post">
+
+        <div>
+            <label>title of category</label>
+            <input class="border-2 border-gray-300" asp-for="Title" />
+        </div>
+
+        <div>
+            <input class="border-2 border-gray-300" type="submit" value="Create Category" />
+        </div>
+    </form>
+</div>
